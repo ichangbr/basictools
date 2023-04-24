@@ -1,4 +1,18 @@
+# _ ____ ___ 
+# | |___ |==]
+# ---
+# CREATED: 24.4.2023
+# LAST MODIFIED: 24.4.2023
 
+
+#' Free Memory
+#' 
+#' Deletes selected files from the environment
+#' @param objs Character vector of the names of objects to delete
+#' @param echo If true, output for gc() is shown. F by default
+#' @examples
+#' freeMem(c("a", "b"), echo = T)
+#' @export
 
 freeMem <- function(objs, echo = F){
   if(!is.vector(objs)) stop("objs must be a vector")
