@@ -4,10 +4,10 @@
 \alias{freeMem}
 \title{Free Memory}
 \usage{
-freeMem(objs, echo = F)
+freeMem(objs = NULL, echo = F)
 }
 \arguments{
-\item{objs}{Character vector of the names of objects to delete}
+\item{objs}{Character vector of the names of objects to delete. If left empty all objects will be deleted}
 
 \item{echo}{If true, output for gc() is shown. F by default}
 }
