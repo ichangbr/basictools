@@ -8,7 +8,7 @@
 #' Free Memory
 #' 
 #' Deletes selected files from the environment
-#' @param objs Character vector of the names of objects to delete
+#' @param objs Character vector of the names of objects to delete. If left empty all objects will be deleted
 #' @param echo If true, output for gc() is shown. F by default
 #' @examples
 #' freeMem(c("a", "b"), echo = T)
