@@ -15,5 +15,7 @@ freeMem(objs = NULL, echo = F)
 Deletes selected files from the environment
 }
 \examples{
+a <- c(1, 2)
+b <- c(1, 2, 3)
 freeMem(c("a", "b"), echo = T)
 }

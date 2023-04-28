@@ -11,6 +11,8 @@
 #' @param objs Character vector of the names of objects to delete. If left empty all objects will be deleted
 #' @param echo If true, output for gc() is shown. F by default
 #' @examples
+#' a <- c(1, 2)
+#' b <- c(1, 2, 3)
 #' freeMem(c("a", "b"), echo = T)
 #' @export
 
