@@ -4,10 +4,12 @@
 \alias{freeMem}
 \title{Free Memory}
 \usage{
-freeMem(objs = NULL, echo = F)
+freeMem(objs = NULL, exclude = F, echo = F)
 }
 \arguments{
 \item{objs}{Character vector of the names of objects to delete. If left empty all objects will be deleted}
+
+\item{exclude}{Boolean to determine whether to keep or discard the selected objects}
 
 \item{echo}{If true, output for gc() is shown. F by default}
 }
