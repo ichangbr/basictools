@@ -40,8 +40,8 @@ nMeans <- function(x, n, over = "c", fun = NULL) {
   idxs <- seq(1,mx,n)
   idxs <- Map(c, idxs, idxs + (n - 1))
   if (over_cols) {
-    do.call(bind, Map(function(c) apply(x[, c[1]:c[2]], marg, fun), idxs))
+    do.call(bind, Map(function(c) apply(x[, c[1]:c[2]], marg, f), idxs))
   } else {
-    do.call(bind, Map(function(c) apply(x[c[1]:c[2], ], marg, fun), idxs))
+    do.call(bind, Map(function(c) apply(x[c[1]:c[2], ], marg, f), idxs))
   }
 }
