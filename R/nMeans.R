@@ -4,11 +4,12 @@
 # CREATED: 05.05.2023
 # LAST MODIFIED: 05.05.2023
 
-#' Calculate the mean of every n columns or rows of a matrix or data frame.
+#' Calculate the means of matrix-like objects divided into equal-sized groups
 #'
 #' @param x A matrix or data frame.
 #' @param n An integer specifying the number of columns or rows to group together.
 #' @param over A character string indicating whether to group by columns ("c" or "col") or rows ("r" or "row").
+#' @param fun An optional function to apply to each group. Defaults to \code{mean}.
 #'
 #' @return A matrix or data frame with the means of every n columns or rows.
 #'
@@ -25,7 +26,7 @@
 #'
 #' @export
 
-nMeans <- function(x, n, over = "c") {
+nMeans <- function(x, n, over = "c", fun = NULL) {
   # Error Messages
   if(!class(x)[1] %in% c("tbl_df", "matrix", "data.frame")) stop("Input x must be a matrix, data.frame or tibble")
   if(!over %in% c("c", "r", "col", "row")) stop("over must one of \"c\", \"r\", \"col\", \"row\".")
@@ -35,11 +36,12 @@ nMeans <- function(x, n, over = "c") {
   marg <- ifelse(over_cols, 1, 2)
   bind <- ifelse(over_cols, cbind, rbind)
   if(mx%%n != 0) stop(sprintf("number of %s is not multiple of n", err_str))
+  f <- ifelse(is.null(fun), mean, fun)
   idxs <- seq(1,mx,n)
   idxs <- Map(c, idxs, idxs + (n - 1))
   if (over_cols) {
-    do.call(bind, Map(function(c) apply(x[, c[1]:c[2]], marg, mean), idxs))
+    do.call(bind, Map(function(c) apply(x[, c[1]:c[2]], marg, fun), idxs))
   } else {
-    do.call(bind, Map(function(c) apply(x[c[1]:c[2], ], marg, mean), idxs))
+    do.call(bind, Map(function(c) apply(x[c[1]:c[2], ], marg, fun), idxs))
   }
 }

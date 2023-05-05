@@ -2,9 +2,9 @@
 % Please edit documentation in R/nMeans.R
 \name{nMeans}
 \alias{nMeans}
-\title{Calculate the mean of every n columns or rows of a matrix or data frame.}
+\title{Calculate the means of matrix-like objects divided into equal-sized groups}
 \usage{
-nMeans(x, n, over = "c")
+nMeans(x, n, over = "c", fun = NULL)
 }
 \arguments{
 \item{x}{A matrix or data frame.}
@@ -12,12 +12,14 @@ nMeans(x, n, over = "c")
 \item{n}{An integer specifying the number of columns or rows to group together.}
 
 \item{over}{A character string indicating whether to group by columns ("c" or "col") or rows ("r" or "row").}
+
+\item{fun}{An optional function to apply to each group. Defaults to \code{mean}.}
 }
 \value{
 A matrix or data frame with the means of every n columns or rows.
 }
 \description{
-Calculate the mean of every n columns or rows of a matrix or data frame.
+Calculate the means of matrix-like objects divided into equal-sized groups
 }
 \details{
 The function takes in a matrix or data frame \code{x} and groups the data by every \code{n} columns or rows, depending on whether \code{over} is set to "c"/"col" or "r"/"row", respectively. 
