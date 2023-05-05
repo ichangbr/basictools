@@ -2,22 +2,45 @@
 % Please edit documentation in R/freeMem.R
 \name{freeMem}
 \alias{freeMem}
-\title{Free Memory}
+\title{Free up memory by removing objects from the R environment}
 \usage{
 freeMem(objs = NULL, exclude = F, echo = F)
 }
 \arguments{
-\item{objs}{Character vector of the names of objects to delete. If left empty all objects will be deleted}
+\item{objs}{A character vector of the names of objects to remove from the R
+environment. If \code{NULL}, all objects in the global environment will be
+removed.}
 
-\item{exclude}{Boolean to determine whether to keep or discard the selected objects}
+\item{exclude}{A logical value indicating whether to exclude the objects named
+in \code{objs} from removal instead of removing them. The default is
+\code{FALSE}.}
 
-\item{echo}{If true, output for gc() is shown. F by default}
+\item{echo}{A logical value indicating whether to print the amount of memory
+freed after removing the objects. The default is \code{FALSE}.}
+}
+\value{
+This function is called for its side effects, and does not return a
+  value.
 }
 \description{
-Deletes selected files from the environment
+This function can be used to remove one or more objects from the R environment
+in order to free up memory. By default, all objects in the global environment
+will be removed.
 }
 \examples{
-a <- c(1, 2)
-b <- c(1, 2, 3)
-freeMem(c("a", "b"), echo = T)
+# Remove all objects from the global environment
+freeMem()
+
+# Remove specific objects from the global environment
+freeMem(c("myData", "myModel"))
+
+# Exclude specific objects from removal
+freeMem(c("myData", "myModel"), exclude = TRUE)
+
+# Print the amount of memory freed by removing objects
+freeMem(echo = TRUE)
+
+}
+\seealso{
+\code{\link{rm}}, \code{\link{gc}}
 }

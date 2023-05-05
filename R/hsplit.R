@@ -4,20 +4,38 @@
 # CREATED: 28.04.2023
 # LAST MODIFIED: 28.04.2023
 
-#' Horizontal Split
-#' 
-#' Splits `data.frame`, `tibble`, or `matrix` by column number.
-#' @param df Object to split
-#' @param cnum number of column to split. If `multisplit` `TRUE` it is the number of columns per resulting dataframe (the last `data.frame` is the remaining columns).
-#' @param multisplit if `FALSE` split `df` in two. If `TRUE` split `df` in multiple data.frames with `cnum` column number, with the last one being the remainder columns.
+#' Split a data frame or matrix into two or more horizontal sections
+#'
+#' This function splits a data frame or matrix into two sections based on the
+#' column number specified in the \code{cnum} argument. If \code{multisplit} is
+#' set to \code{TRUE}, the data frame or matrix is split into multiple sections
+#' based on the number of columns specified in \code{cnum}.
+#'
+#' @param df A data frame, tibble, or matrix to be split.
+#' @param cnum The column number to split the data frame or matrix on.
+#' @param multisplit A logical value indicating whether to split the data frame
+#'   or matrix into multiple sections. The default is \code{FALSE}.
+#'
+#' @return If \code{multisplit} is \code{FALSE}, this function returns a list
+#'   containing two data frames: the first containing columns 1 through \code{cnum},
+#'   and the second containing columns (\code{cnum}+1) through the end. If
+#'   \code{multisplit} is \code{TRUE}, this function returns a list of data frames,
+#'   with each data frame containing the number of columns specified in \code{cnum}.
+#'
 #' @examples
-#' dataframe <- data.frame(a = 1:5, b = 1:5, c = 1:5, d = 1:5, e = 1:5, f = 1:5)
-#' 
-#' ## split in two
-#' hsplit(dataframe, cnum = 3)
-#' 
-#' ## split in multiple
-#' hsplit(dataframe, cnum = 2, multisplit = T)
+#' # Split a data frame into two sections
+#' hsplit(iris, 3)
+#'
+#' # Split a matrix into two sections
+#' hsplit(matrix(1:20, nrow = 4), 2)
+#'
+#' # Split a data frame into multiple sections
+#' hsplit(iris, 2, multisplit = TRUE)
+#'
+#' @seealso \code{\link{vsplit}}
+#'
+#' @importFrom base class stop ncol lapply seq as.data.frame
+#'
 #' @export
 
 hsplit <- function(df, cnum, multisplit = F) {

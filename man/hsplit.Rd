@@ -2,26 +2,42 @@
 % Please edit documentation in R/hsplit.R
 \name{hsplit}
 \alias{hsplit}
-\title{Horizontal Split}
+\title{Split a data frame or matrix into two or more horizontal sections}
 \usage{
 hsplit(df, cnum, multisplit = F)
 }
 \arguments{
-\item{df}{Object to split}
+\item{df}{A data frame, tibble, or matrix to be split.}
 
-\item{cnum}{number of column to split. If `multisplit` `TRUE` it is the number of columns per resulting dataframe (the last `data.frame` is the remaining columns).}
+\item{cnum}{The column number to split the data frame or matrix on.}
 
-\item{multisplit}{if `FALSE` split `df` in two. If `TRUE` split `df` in multiple data.frames with `cnum` column number, with the last one being the remainder columns.}
+\item{multisplit}{A logical value indicating whether to split the data frame
+or matrix into multiple sections. The default is \code{FALSE}.}
+}
+\value{
+If \code{multisplit} is \code{FALSE}, this function returns a list
+  containing two data frames: the first containing columns 1 through \code{cnum},
+  and the second containing columns (\code{cnum}+1) through the end. If
+  \code{multisplit} is \code{TRUE}, this function returns a list of data frames,
+  with each data frame containing the number of columns specified in \code{cnum}.
 }
 \description{
-Splits `data.frame`, `tibble`, or `matrix` by column number.
+This function splits a data frame or matrix into two sections based on the
+column number specified in the \code{cnum} argument. If \code{multisplit} is
+set to \code{TRUE}, the data frame or matrix is split into multiple sections
+based on the number of columns specified in \code{cnum}.
 }
 \examples{
-dataframe <- data.frame(a = 1:5, b = 1:5, c = 1:5, d = 1:5, e = 1:5, f = 1:5)
+# Split a data frame into two sections
+hsplit(iris, 3)
 
-## split in two
-hsplit(dataframe, cnum = 3)
+# Split a matrix into two sections
+hsplit(matrix(1:20, nrow = 4), 2)
 
-## split in multiple
-hsplit(dataframe, cnum = 2, multisplit = T)
+# Split a data frame into multiple sections
+hsplit(iris, 2, multisplit = TRUE)
+
+}
+\seealso{
+\code{\link{vsplit}}
 }
