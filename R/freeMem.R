@@ -38,8 +38,6 @@
 #'
 #' @seealso \code{\link{rm}}, \code{\link{gc}}
 #'
-#' @importFrom base ls rm setdiff
-#'
 #' @export
 
 freeMem <- function(objs = NULL, exclude = F, echo = F){

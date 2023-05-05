@@ -23,7 +23,6 @@
 #' nMeans(matrix(1:9, ncol = 3), 2, over = "col")
 #' nMeans(data.frame(matrix(1:9, ncol = 3)), 2, over = "row")
 #'
-#' @importFrom base Map apply
 #' @export
 
 nMeans <- function(x, n, over = "c") {

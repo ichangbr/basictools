@@ -34,8 +34,6 @@
 #'
 #' @seealso \code{\link{vsplit}}
 #'
-#' @importFrom base class stop ncol lapply seq as.data.frame
-#'
 #' @export
 
 hsplit <- function(df, cnum, multisplit = F) {
