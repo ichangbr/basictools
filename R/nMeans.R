@@ -42,6 +42,6 @@ nMeans <- function(x, n, over = "c", fun = NULL) {
   if (over_cols) {
     do.call(bind, Map(function(c) apply(x[, c[1]:c[2]], marg, f, na.rm = T), idxs))
   } else {
-    do.call(bind, Map(function(c) apply(x[c[1]:c[2], ], marg, f, na.rm = T), idxs))
+    do.call(bind, Map(function(c) apply(x[c[1]:c[2], ], marg, f), idxs))
   }
 }
