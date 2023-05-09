@@ -3,3 +3,4 @@
 export(freeMem)
 export(hsplit)
 export(nMeans)
+export(subsInf)
