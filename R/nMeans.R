@@ -33,15 +33,15 @@ nMeans <- function(x, n, over = "c", fun = NULL) {
   over_cols <- over %in% c("c", "col")
   mx <- ifelse(over_cols, ncol(x), nrow(x))
   err_str <- ifelse(over_cols, "columns", "rows")
-  marg <- ifelse(over_cols, 1, 2)
+  marg <- ifelse(over_cols, 1, 2) # Margin
   bind <- ifelse(over_cols, cbind, rbind)
   if(mx%%n != 0) stop(sprintf("number of %s is not multiple of n", err_str))
   f <- ifelse(is.null(fun), mean, fun)
   idxs <- seq(1,mx,n)
   idxs <- Map(c, idxs, idxs + (n - 1))
   if (over_cols) {
-    do.call(bind, Map(function(c) apply(x[, c[1]:c[2]], marg, f), idxs))
+    do.call(bind, Map(function(c) apply(x[, c[1]:c[2]], marg, f, na.rm = T), idxs))
   } else {
-    do.call(bind, Map(function(c) apply(x[c[1]:c[2], ], marg, f), idxs))
+    do.call(bind, Map(function(c) apply(x[c[1]:c[2], ], marg, f, na.rm = T), idxs))
   }
 }
